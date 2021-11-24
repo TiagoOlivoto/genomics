@@ -121,9 +121,9 @@
       <h1 data-toc-skip>Tools for Genomic Teaching</h1>
                         <h4 class="author">Tiago Olivoto</h4>
             
-            <h4 class="date">2021-11-23</h4>
+            <h4 class="date">2021-11-24</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/TiagoOlivoto/genomictools/blob/master/vignettes/examples.Rmd"><code>vignettes/examples.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/TiagoOlivoto/genomics/blob/master/vignettes/examples.Rmd"><code>vignettes/examples.Rmd</code></a></small>
       <div class="hidden name"><code>examples.Rmd</code></div>
 
     </div>
@@ -163,7 +163,7 @@
 </ol>
 <p>Use the function <code><a href="../reference/gen_code.html">gen_code()</a></code> to get the desired genetic code</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TiagoOlivoto/genomictools">genomics</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TiagoOlivoto/genomics">genomics</a></span><span class="op">)</span>
 <span class="co">#&gt; |=============================================|</span>
 <span class="co">#&gt; | Tools for Genomic Teaching (genomics 0.1.0) |</span>
 <span class="co">#&gt; | Author: Tiago Olivoto                       |</span>
@@ -354,7 +354,7 @@
 <a href="#standard-genetic-code" class="anchor"></a>Standard genetic code</h2>
 <p>The following example translates three codons considering the standard genetic code (<code>transl_table = 1</code>). Stop codons are shown was <code>"*"</code>. By default, a <a href="http://130.88.97.239/bioactivity/aacodefrm.html">one-letter code</a> is used. Alternatively, one can use the argument <code>type</code> to change the output type: * <code>type = "olc"</code> for one-letter code, e.g., “V”. * <code>type = "tlc"</code> for three-letter code, e.g., “Val”. * <code>type = "name"</code> for the complete name, e.g., “Valine”.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TiagoOlivoto/genomictools">genomics</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TiagoOlivoto/genomics">genomics</a></span><span class="op">)</span>
 <span class="va">codons</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"AUG"</span>, <span class="st">"GUA"</span>, <span class="st">"ACG"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/gen_code.html">aminoacid</a></span><span class="op">(</span><span class="va">codons</span><span class="op">)</span>
 <span class="co">#&gt; [1] "M" "V" "T"</span>
@@ -378,7 +378,11 @@
 <p>By default, translation begins only when the <code>start_codon</code> (AUG) is found. To start the translation with the first codon of the sequence, use <code>start_codon_first = FALSE</code>. Note that in the following example, the second codon (UGA) is a stop codon.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/highlight_pattern.html">highlight_pattern</a></span><span class="op">(</span><span class="va">rna2</span>, <span class="st">"AUG"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "__AUG_______________"</span>
+<span class="co">#&gt; ============ Location ============</span>
+<span class="co">#&gt;   pattern start end</span>
+<span class="co">#&gt; 1     AUG     3   5</span>
+<span class="co">#&gt; ----------------------------------</span>
+<span class="co">#&gt; __AUG_______________</span>
 
 <span class="co"># translation begins with the first nucleotide</span>
 <span class="fu"><a href="../reference/translate.html">translate</a></span><span class="op">(</span><span class="va">rna2</span>, start_codon_first <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>

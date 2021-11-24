@@ -218,11 +218,12 @@ is_rna <- function(x, verbose = TRUE){
 #' @param replacement A replacement to replace all the characters that do not
 #'   match the `pattern` with.
 #'
-#' @return A character vector of the same length as `x`
+#' @return A list with the location and highlighted pattern.
 #' @export
 #'
 #' @examples
 #' x <- rand_nuc_seq(n = 50, seed = 1)
+#' x
 #' highlight_pattern(x, pattern = "CCA")
 #'
 #' # or a vector
@@ -231,13 +232,17 @@ is_rna <- function(x, verbose = TRUE){
 #' # vectorized
 #'
 #' x2 <-  rand_nuc_seq(n = 50, seed = 2)
-#'
+#' x2
 #' highlight_pattern(c(x, x2), pattern = "ATG")
-highlight_pattern <- function(x, pattern, replacement = "_"){
+highlight_pattern <- function(x,
+                              pattern,
+                              replacement = "_",
+                              verbose = TRUE){
   if(length(x) > 1){
-    as.character(lapply(x, highlight_pattern, pattern, replacement))
+    a <- lapply(x, highlight_pattern, pattern, replacement, verbose)
   } else{
     loc <- str_locate_all(x, pattern)
+    names(loc) <- pattern
     dots <- paste0(rep(replacement, nchar(x)), collapse = "")
     for(i in 1:length(loc)){
       start <- loc[[i]][,1]
@@ -247,6 +252,16 @@ highlight_pattern <- function(x, pattern, replacement = "_"){
         str_sub(dots, start[j], end[j]) <- pattern[i]
       }
     }
-    return(dots)
+    loc <- lapply(loc, function(x){
+      as.data.frame(x)
+    }) %>%
+      bind_rows(.id = "pattern")
+    if(isTRUE(verbose)){
+      cat("============ Location ============\n")
+      print(loc)
+      cat("----------------------------------\n")
+      message(dots)
+    }
+    invisible(list(location = loc, sequence = dots))
   }
 }

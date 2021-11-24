@@ -4,7 +4,7 @@
 \alias{highlight_pattern}
 \title{Highlight a pattern sequence in a vector}
 \usage{
-highlight_pattern(x, pattern, replacement = "_")
+highlight_pattern(x, pattern, replacement = "_", verbose = TRUE)
 }
 \arguments{
 \item{x}{A character vector.}
@@ -15,7 +15,7 @@ highlight_pattern(x, pattern, replacement = "_")
 match the \code{pattern} with.}
 }
 \value{
-A character vector of the same length as \code{x}
+A list with the location and highlighted pattern.
 }
 \description{
 The function highlights a pattern (e.g., "UAG") in a vector by putting a
@@ -24,6 +24,7 @@ sequence
 }
 \examples{
 x <- rand_nuc_seq(n = 50, seed = 1)
+x
 highlight_pattern(x, pattern = "CCA")
 
 # or a vector
@@ -32,6 +33,6 @@ highlight_pattern(x, pattern = c("CCA", "GTA"))
 # vectorized
 
 x2 <-  rand_nuc_seq(n = 50, seed = 2)
-
+x2
 highlight_pattern(c(x, x2), pattern = "ATG")
 }
