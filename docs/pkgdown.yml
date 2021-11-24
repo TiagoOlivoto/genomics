@@ -1,0 +1,10 @@
+pandoc: 2.11.4
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  examples: examples.html
+last_built: 2021-11-24T00:53Z
+urls:
+  reference: https://tiagoolivoto.github.io/genomictools//reference
+  article: https://tiagoolivoto.github.io/genomictools//articles
+
