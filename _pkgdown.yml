@@ -1,0 +1,80 @@
+url: https://tiagoolivoto.github.io/genomictools/
+
+home:
+  title: genomics
+  description: Tools for Genomic Teaching
+
+toc:
+  depth: 3
+
+template:
+  assets: fans.html
+  params:
+    bootswatch: cosmo
+
+authors:
+  Tiago Olivoto:
+    href: https://olivoto.netlify.app/
+
+navbar:
+  title: "sparklyr"
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "Examples"
+      href: articles/examples.html
+    - text: "Functions"
+      href: reference/index.html
+    - text: News
+      menu:
+      - text: Package news
+        href: news/index.html
+      - text: Blog posts
+        href: https://olivoto.netlify.app/
+    - text: More
+      menu:
+      - text: Code of Conduct
+        href: CODE_OF_CONDUCT.html
+      - text: Contributing
+        href: CONTRIBUTING.html
+  right:
+    - icon: "fab fa-researchgate fa-2x"
+      href: https://www.researchgate.net/profile/Tiago_Olivoto2
+    - icon: "fa-github fa-2x"
+      href: https://github.com/TiagoOlivoto
+    - icon: "fab fa-twitter fa-2x"
+      href: https://twitter.com/tolivoto
+    - icon: "fab fa-mendeley fa-2x"
+      href: https://www.mendeley.com/profiles/tiago-olivoto/
+
+reference:
+  - title: "Genetic code"
+    desc: "Tools for genetic in different translation tables"
+    contents:
+      - aminoacid
+      - gen_code
+
+  - title: "Random generation"
+    desc: "Tools for random generation of nucleotide sequences"
+    contents:
+      - rand_nuc_seq
+      - rand_acg
+
+  - title: "Translation"
+    desc: "Tools for RNA translation to a protein chain"
+    contents:
+      - translate
+      - antiparallel
+      - dna_to_rna
+      - rna_to_dna
+
+  - title: "Helpers"
+    desc: "Helper functions"
+    contents:
+      - highlight_pattern
+      - nth_element
+      - separate_col
+      - split_each
+      - tidy_sequence
+      - util_is

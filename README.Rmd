@@ -1,0 +1,71 @@
+---
+always_allow_html: yes
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#",
+  fig.path = "man/figures/README-"
+)
+
+```
+
+# genomics 
+
+`genomics` is specially designed for genomic teaching. The package will help with the generation of random nucleotides sequences with start and stop codons (`rand_nuc_seq()`), interpretation of genetic code in different translation tables (`gen_code()` and `aminoacid()`), antiparallel sequences (`antiparallel()`), and RNA translation to polypeptide chains (`translate()`, `dna_to_rna()`, `rna_to_dna()`)
+
+# Installation
+
+`genomics` is only on [GitHub](https://github.com/TiagoOlivoto/genomics), and can be installed with
+
+```{r, eval=FALSE}
+devtools::install_github("TiagoOlivoto/genomics")
+
+```
+
+*Note*: If you are a Windows user, you should also first download and install the latest version of [Rtools](https://cran.r-project.org/bin/windows/Rtools/).
+
+
+# Genetic code
+```{r}
+library(genomics)
+aminoacid("AUG")
+aminoacid(c("AUG", "CGA", "UGA"), type = "name")
+
+# standard genetic code
+gen_code()
+```
+
+
+# Generate a DNA sequence
+
+```{r}
+# 'code' DNA
+dna <- rand_nuc_seq(n = 40)
+dna
+
+# transcription to mRNA
+mrna <- dna_to_rna(dna)
+mrna
+```
+
+
+# Translation
+In the following example, the mRNA (`m_rna`) in `mrna` is translated to a polypeptide chain.
+
+```{r}
+# one letter code
+# stop codon as *
+translate(mrna$m_rna)
+
+# Three letter code
+# translation continues after stop codon
+translate(mrna$m_rna,
+          type = "tlc",
+          no_stop = TRUE,
+          sep = ".")
+```
